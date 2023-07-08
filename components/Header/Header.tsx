@@ -1,0 +1,23 @@
+import React from 'react';
+import logo from '../../assets/Icons/MainLogo.svg'
+import Image from 'next/image';
+
+const Header = () => {
+    const headerItems = ['سرویس ها', 'راه حل ها', 'بازار ها', 'شرکت', 'تماس با ما']
+    return (
+        <div className='HeaderSection flex w-full justify-between items-center px-8 my-3.5 text-white skew-y-6'>
+            <Image src={logo} alt='MainLogo' />
+            <div className='flex gap-x-6'>
+                {headerItems.map((item) => {
+                    return (
+                        <div>
+                            {item}
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    );
+};
+
+export default Header;
