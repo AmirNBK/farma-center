@@ -5,7 +5,6 @@ import polygon from '../../assets/Icons/Polygon.svg'
 import cube from '../../assets/Icons/Cube.svg'
 import more from '../../assets/Icons/More.svg'
 import smallPolygon from '../../assets/Icons/SmallPolygon.svg'
-import mockup from '../../assets/Images/doctorMockup.png'
 
 const HeroSection = () => {
     return (
@@ -22,12 +21,12 @@ const HeroSection = () => {
                 <Button text='جستجو کنید' />
             </div>
             <div className='HeroSection__leftSide relative mr-11' style={{ flex: '1.5' }}>
-                <Image src={mockup} alt='doctorMockup' className='absolute left-2/4	top-2/4'
-                    style={{ transform: 'translate(-50%, -45%)' }}
-                />
+                <video src={require('../../assets/Videos/mock.mp4')} className='mx-auto my-0'
+                style={{transform : 'translateY(-100px)'}}
+                autoPlay loop muted />
                 <Image src={polygon} className='absolute right-0 top-10' alt='polygon' />
                 <Image src={cube} className='absolute right-0' style={{ top: '-50px' }} alt='cube' />
-                <Image src={more} className='absolute bottom-0' alt='more' style={{ bottom: '-50px' }} />
+                <Image src={more} className='absolute bottom-0' alt='more' style={{ top : '50%' }} />
                 <Image src={smallPolygon} alt='smallPolygon' className='absolute top-20 left-5' />
                 <Image src={smallPolygon} alt='smallPolygon' className='absolute top-0' />
             </div>

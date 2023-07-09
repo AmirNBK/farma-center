@@ -3,9 +3,12 @@ import { Inter } from 'next/font/google'
 import Header from '../components/Header/Header'
 import HeroSection from '@/components/HeroSection/HeroSection'
 import FeaturesSection from '@/components/FeaturesSection/FeaturesSection'
-import { PrimeReactProvider } from 'primereact/context';
-import "primereact/resources/themes/lara-light-indigo/theme.css";     
-import "primereact/resources/primereact.min.css";    
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import AboutUs from '@/components/AboutUs/AboutUs'
+import Services from '@/components/Services/Services'
+import ProvidedServices from '@/components/ProvidedServices/ProvidedServices'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,11 +21,17 @@ export default function Home() {
       }
     >
       <PrimeReactProvider>
-        <div style={{ backgroundColor: '#313232', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 130px 0px' }}>
+        <div
+          style={{ backgroundColor: '#313232', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 0px 0px', height: '650px' }}>
           <Header />
           <HeroSection />
         </div>
         <FeaturesSection />
+        <div style={{ background: '#313232' }} className='w-full'>
+          <AboutUs />
+          <Services />
+          <ProvidedServices />
+        </div>
       </PrimeReactProvider>
     </main>
   )
