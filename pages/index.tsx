@@ -9,6 +9,7 @@ import "primereact/resources/primereact.min.css";
 import AboutUs from '@/components/AboutUs/AboutUs'
 import Services from '@/components/Services/Services'
 import ProvidedServices from '@/components/ProvidedServices/ProvidedServices'
+import Blogs from '@/components/Blogs/Blogs'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -31,6 +32,7 @@ export default function Home() {
           <AboutUs />
           <Services />
           <ProvidedServices />
+          <Blogs />
         </div>
       </PrimeReactProvider>
     </main>
