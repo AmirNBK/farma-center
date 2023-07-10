@@ -10,6 +10,7 @@ import AboutUs from '@/components/AboutUs/AboutUs'
 import Services from '@/components/Services/Services'
 import ProvidedServices from '@/components/ProvidedServices/ProvidedServices'
 import Blogs from '@/components/Blogs/Blogs'
+import ContactUs from '@/components/ContactUs/ContactUs'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,6 +34,7 @@ export default function Home() {
           <Services />
           <ProvidedServices />
           <Blogs />
+          <ContactUs />
         </div>
       </PrimeReactProvider>
     </main>

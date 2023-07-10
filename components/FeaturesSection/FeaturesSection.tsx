@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MultiPolygon from '../../assets/Icons/MultiPolygon.svg';
 import Image from 'next/image';
 import { Carousel } from 'primereact/carousel';
+import drugstore from '../../assets/Icons/drugstore.svg'
 
 interface Product {
     title: string;
@@ -27,9 +28,10 @@ const FeaturesSection = () => {
 
     const productTemplate = (product: Product) => {
         return (
-            <div className="flex flex-column">
-                <h3>{product.title}</h3>
-                <p>{product.description}</p>
+            <div className="flex flex-col text-center items-center gap-3 py-6">
+                <Image src={drugstore} alt='drugstoreICon' />
+                <h3 className='text-2xl'>{product.title}</h3>
+                <p className='text-lg' style={{ direction: 'rtl' }}>{product.description}</p>
             </div>
         );
     };
@@ -39,7 +41,7 @@ const FeaturesSection = () => {
             <div className="absolute left-0" style={{ zIndex: '-1' }}>
                 <Image src={MultiPolygon} alt="polygon" />
             </div>
-            <div style={{ marginTop: '500px' }}>
+            <div style={{ marginTop: '150px' }} className='card'>
                 <Carousel
                     value={features}
                     numVisible={1}
