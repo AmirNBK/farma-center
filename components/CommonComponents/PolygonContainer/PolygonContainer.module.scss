@@ -1,0 +1,14 @@
+.PolygonContainer {
+    transition: transform 0.5s;
+    transform: translateY(0);
+  }
+  
+  .PolygonContainer:hover {
+    transform: translateY(-20px);
+  }
+  
+  .PolygonContainer:not(:hover) {
+    transition: transform 0.5s;
+    transform: translateY(0);
+  }
+  

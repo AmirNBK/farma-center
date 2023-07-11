@@ -2,6 +2,7 @@ import React from 'react';
 import polygon from '../../../assets/Images/PolygonContainer.svg';
 import Image from 'next/image';
 import Button from '../Button/Button';
+import styles from './PolygonContainer.module.scss'
 
 const PolygonContainer = (props: {
     title: string;
@@ -11,8 +12,8 @@ const PolygonContainer = (props: {
     const description = props.description;
 
     return (
-        <div className="PolygonContainer">
-            <div className="image-container">
+        <div className={`PolygonContainer flex justify-center items-center cursor-pointer ${styles.PolygonContainer}`}>
+            <div className="image-container relative">
                 <Image src={polygon} alt="polygonContainer" />
                 <div className="text-container">
                     <h4 className='text-2xl'>{title}</h4>
@@ -21,16 +22,6 @@ const PolygonContainer = (props: {
                 </div>
             </div>
             <style jsx>{`
-        .PolygonContainer {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        
-        .image-container {
-          position: relative;
-        }
-
         .text-container {
           position: absolute;
           align-items: center;

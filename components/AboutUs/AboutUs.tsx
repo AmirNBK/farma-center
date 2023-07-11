@@ -19,7 +19,7 @@ const AboutUs = () => {
                 const aboutUsCoordinates = aboutUsRef.current.getBoundingClientRect();
                 const aboutUsY = aboutUsCoordinates.top;
 
-                if (aboutUsY <= 900) {
+                if (aboutUsY <= 750) {
                     setIsReached(true)
                 }
             }
