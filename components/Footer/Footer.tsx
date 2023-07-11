@@ -33,7 +33,7 @@ const Footer = () => {
 
     return (
         <div className='footer flex flex-row py-8 justify-around' style={{ background: '#062C48' }}>
-            <div className='footer__leftSection flex flex-col text-right gap-y-10'>
+            <div className='footer__leftSection flex flex-col text-right gap-y-10' style={{ direction: 'rtl' }}>
                 {leftSections.map((section, index) => (
                     <div key={index}>
                         <h4 className='footer__leftSection__title font-bold text-lg' style={{ color: '#EBDAB2' }}>

@@ -12,6 +12,7 @@ import ProvidedServices from '@/components/ProvidedServices/ProvidedServices'
 import Blogs from '@/components/Blogs/Blogs'
 import ContactUs from '@/components/ContactUs/ContactUs'
 import Footer from '@/components/Footer/Footer'
+import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,6 +38,7 @@ export default function Home() {
           <Blogs />
           <ContactUs />
           <Footer />
+          <PoliciesSection />
         </div>
       </PrimeReactProvider>
     </main>
