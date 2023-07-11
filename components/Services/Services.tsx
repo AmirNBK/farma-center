@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Title from '../CommonComponents/Title/Title';
 import PolygonContainer from '../CommonComponents/PolygonContainer/PolygonContainer';
+import styles from './Services.module.scss'
 
 const Services = () => {
+    const servicesRef = useRef(null);
+    const [isReached, setIsReached] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (servicesRef.current) {
+                const aboutUsCoordinates = servicesRef.current.getBoundingClientRect();
+                const aboutUsY = aboutUsCoordinates.top;
+
+                if (aboutUsY <= 700) {
+                    setIsReached(true)
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     const services = [
         {
             title: 'تجربه مشاوره آسان',
@@ -31,17 +53,19 @@ const Services = () => {
     ];
 
     return (
-        <div className='Services mb-20'>
+        <div className='Services mb-20' ref={servicesRef}>
             <div className='Services__title w-4/5 mx-auto my-0'>
                 <Title title='خدمات' />
             </div>
             <div className='flex flex-row flex-wrap justify-evenly my-6 gap-12'>
                 {services.map((service, index) => (
-                    <PolygonContainer
-                        key={index}
-                        title={service.title}
-                        description={service.description}
-                    />
+                    <div className={`${isReached && styles.polygon}`}>
+                        <PolygonContainer
+                            key={index}
+                            title={service.title}
+                            description={service.description}
+                        />
+                    </div>
                 ))}
             </div>
         </div>
