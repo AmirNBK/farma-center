@@ -1,0 +1,37 @@
+.shape {
+    animation: movingX 5s ease-in-out infinite both;
+}
+
+.cube {
+    animation: movingY 6s ease-in-out infinite both;
+}
+
+@keyframes movingX {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(20px);
+
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes movingY {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(20px);
+
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

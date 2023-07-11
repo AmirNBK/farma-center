@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { Vazirmatn } from 'next/font/google'
 import Header from '../components/Header/Header'
 import HeroSection from '@/components/HeroSection/HeroSection'
 import FeaturesSection from '@/components/FeaturesSection/FeaturesSection'
@@ -14,24 +13,21 @@ import ContactUs from '@/components/ContactUs/ContactUs'
 import Footer from '@/components/Footer/Footer'
 import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
 
-
-const inter = Inter({ subsets: ['latin'] })
-
+const vazir = Vazirmatn({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main
-      style={{ fontFamily: 'Inter' }}
-      className={`flex min-h-screen flex-col items-center ${inter.className}`
+      className={`flex min-h-screen flex-col items-center ${vazir.className}`
       }
     >
       <PrimeReactProvider>
         <div
-          style={{ backgroundColor: '#313232', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 0px 0px', height: '650px' }}>
+          style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 0px 0px', height: '680px' }}>
           <Header />
           <HeroSection />
         </div>
         <FeaturesSection />
-        <div style={{ background: '#313232' }} className='w-full'>
+        <div style={{ background: '#313232' }} className='w-full  z-0'>
           <AboutUs />
           <Services />
           <ProvidedServices />

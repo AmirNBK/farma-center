@@ -7,10 +7,10 @@ const Header = () => {
     return (
         <div className='HeaderSection flex w-full justify-between items-center px-8 mt-3.5 mb-16 text-white skew-y-6'>
             <Image src={logo} alt='MainLogo' />
-            <div className='flex gap-x-6'>
+            <div className='flex gap-x-6 flex-row-reverse'>
                 {headerItems.map((item) => {
                     return (
-                        <div>
+                        <div className='cursor-pointer'>
                             {item}
                         </div>
                     )
