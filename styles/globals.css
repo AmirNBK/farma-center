@@ -19,6 +19,11 @@
 
 body {
 
+  .p-carousel .p-carousel-content .p-carousel-prev,
+  .p-carousel .p-carousel-content .p-carousel-next {
+    background-color: #EBDAB2;
+    color: #fff;
+  }
 
   .p-carousel .p-carousel-indicators .p-carousel-indicator button {
     width: 11px;

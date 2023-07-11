@@ -28,7 +28,7 @@ const ProvidedServices = () => {
             style={{ background: '#2C2929', padding: '235px 0px 120px 0px', transform: 'skewY(-6deg)', margin: '140px 0px' }}
         >
             <div className='flex flex-col items-center skew-y-6'>
-                <h3 className='text-white text-5xl'> ارائه خدمات در سراسر ایران </h3>
+                <h3 className='text-white text-5xl mb-12'> ارائه خدمات در سراسر ایران </h3>
                 <p
                     className='text-white text-3xl mt-6 text-center'
                     style={{ direction: 'rtl' }}

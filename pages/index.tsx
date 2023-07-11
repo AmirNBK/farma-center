@@ -20,6 +20,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center ${vazir.className}`
       }
     >
+      <title> Farma center </title>
       <PrimeReactProvider>
         <div
           style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 0px 0px', height: '680px' }}>
