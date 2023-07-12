@@ -19,7 +19,7 @@ const PolygonContainer = (props: {
                 <Image src={polygon} alt="polygonContainer" />
                 <div className={`text-container ${isResponsive ? 'gap-y-3.5 xl:gap-y-6' : 'gap-y-6'}`}>
                     <h4 className={`${isResponsive ? "text-lg xl:text-2xl" : 'text-2xl'}`}>{title}</h4>
-                    <p className={`${isResponsive && 'text-sm xl:text-base'}`}>{description}</p>
+                    <p className={`${isResponsive && 'text-xs xl:text-sm'}`}>{description}</p>
                     <Button text='بیشتر بدانید' />
                 </div>
             </div>

@@ -26,7 +26,7 @@ export default function Home() {
         <div
           className={`${style.HeroSection}`}
           style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)' }}>
-          <Header />
+          <Header HomePageHeader />
           <HeroSection />
         </div>
         <FeaturesSection />

@@ -19,6 +19,18 @@
 
 body {
 
+  .p-float-label>label {
+    right: 0.75rem !important;
+    text-align: right;
+  }
+
+  .p-button .p-button-label {
+    font-family: '__Vazirmatn_253970';
+    font-weight: 400;
+  }
+
+
+
   .z-minus {
     z-index: -1;
   }

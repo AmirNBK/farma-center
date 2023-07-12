@@ -41,7 +41,8 @@ const AboutUs = () => {
                 <Image src={multiPolygon} alt='polygon' className='absolute hidden xl:block' style={{ top: '15%', right: '-130%' }} />
                 <Image src={dots} alt='dots' className='absolute hidden xl:block' style={{ left: '-5%', top: '15%' }} />
                 <div className={`${isReached && style.polygon}`} ref={polygonRef}>
-                    <PolygonContainer isResponsive title='درباره‌ی ما' description='فروشگاه فارماسنتر، مقصد شما برای تهیه داروخانه ها است. با تیم ما، تجربه خرید آسان و مطمئن را تجربه کنید. ما با فروشگاه‌های داروخانه معتبر همکاری می‌کنیم و بهترین خدمات را ارائه می‌دهیم. اعتماد شما ارزشمند است و ما تلاش می‌کنیم تا رضایت شما را بهبود بخشیم.' />
+                    <PolygonContainer isResponsive title='درباره‌ی ما' description='به فارماسنتر خوش آمدید
+مشاوره رایگان، انتقال سرمایه و معرفی فایل های داروخانه در سراسر ایران به راحتی در این سایت امکان پذیر است. شما می توانید از طریق سیستم جستجو،دسته بندی، و فیلترهای مختلف به آسانی داروخانه مورد نظر خود را پیدا کرده و با اطلاعاتی که در این زمینه کسب میکنید قادر خواهید بود داروخانه متناسب با شرایط خود را در کوتاه ترین زمان ممکن انتخاب کنید' />
                 </div>
                 <div className={`${style.polygonPic}`}>
                     <Image src={polygon} alt='polygonPic' className={`${isReached && style.polygon}`} />
