@@ -57,7 +57,7 @@ const Services = () => {
             <div className='Services__title w-4/5 mx-auto my-0'>
                 <Title title='خدمات' />
             </div>
-            <div className='flex flex-row flex-wrap justify-evenly my-6 gap-12'>
+            <div className='flex flex-row flex-wrap justify-evenly my-6 gap-12 px-7 sm:p-0 sm:text-base text-sm'>
                 {services.map((service, index) => (
                     <div className={`${isReached && styles.polygon}`}>
                         <PolygonContainer

@@ -24,13 +24,13 @@ const ProvidedServices = () => {
     ];
 
     return (
-        <div className='ProvidedServices my-16 px-8'
-            style={{ background: '#2C2929', padding: '235px 0px 120px 0px', transform: 'skewY(-6deg)', margin: '140px 0px' }}
+        <div className='ProvidedServices my-16 px-8 pt-28 pb-12 sm:pt-60 sm:pb-28'
+            style={{ background: '#2C2929' , transform: 'skewY(-6deg)', margin: '140px 0px' }}
         >
-            <div className='flex flex-col items-center skew-y-6'>
-                <h3 className='text-white text-5xl mb-12'> ارائه خدمات در سراسر ایران </h3>
+            <div className='flex flex-col items-center skew-y-6 px-12 2xl:p-0 rtl text-center'>
+                <h3 className='text-white text-2xl sm:text-3xl lg:text-5xl lg:mb-12 mb-0'> ارائه خدمات در سراسر ایران </h3>
                 <p
-                    className='text-white text-3xl mt-6 text-center'
+                    className='text-white text-base sm:text-xl lg:text-3xl mt-6 text-center'
                     style={{ direction: 'rtl' }}
                 >
                     با داشتن شبکه‌ی گسترده‌ای از همکاران و همراهان ما در سرتاسر کشور، ما به
@@ -39,14 +39,14 @@ const ProvidedServices = () => {
             </div>
 
             <video src={require('../../assets/Videos/country.webm')}
-            className='skew-y-6'
-            autoPlay loop muted style={{ marginTop: '-110px' }} />
+                className='skew-y-6 m-0 lg:m-t-minus80'
+                autoPlay loop muted />
 
-            <div className='ProvidedServices__features flex flex-row-reverse justify-around items-baseline skew-y-6'>
+            <div className='ProvidedServices__features mt-10 md:m-0 flex-wrap gap-12 px-5 flex flex-row-reverse justify-around items-baseline skew-y-6'>
                 {features.map((feature, index) => (
                     <div className='ProvidedServices__features__item flex flex-col items-center' key={index}>
                         <Image src={feature.icon} alt='tick' />
-                        <p style={{ color: '#EBDAB2' }} className='mt-2 text-base'>{feature.text}</p>
+                        <p style={{ color: '#EBDAB2' }} className='mt-2 sm:text-base text-xs'>{feature.text}</p>
                     </div>
                 ))}
             </div>

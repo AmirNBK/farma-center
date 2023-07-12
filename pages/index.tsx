@@ -12,6 +12,7 @@ import Blogs from '@/components/Blogs/Blogs'
 import ContactUs from '@/components/ContactUs/ContactUs'
 import Footer from '@/components/Footer/Footer'
 import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
+import style from './index.module.scss'
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
 export default function Home() {
@@ -23,7 +24,8 @@ export default function Home() {
       <title> Farma center </title>
       <PrimeReactProvider>
         <div
-          style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)', margin: '-80px 0px', padding: '80px 0px 0px 0px', height: '680px' }}>
+          className={`${style.HeroSection}`}
+          style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)' }}>
           <Header />
           <HeroSection />
         </div>

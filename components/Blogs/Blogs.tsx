@@ -11,6 +11,24 @@ interface Product {
 
 const Blogs = () => {
 
+    const responsiveOptions = [
+        {
+            breakpoint: '2300px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '1200px',
+            numVisible: 2,
+            numScroll: 1
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
+
     const blogRef = useRef(null);
     const [isReached, setIsReached] = useState(false)
 
@@ -67,7 +85,7 @@ const Blogs = () => {
 
     return (
         <div className='Blogs my-10' ref={blogRef}>
-            <h3 className='text-white w-fit mx-auto my-0 text-5xl'> آخرین مقالات </h3>
+            <h3 className='text-white w-fit mx-auto my-0 text-3xl md:text-5xl'> آخرین مقالات </h3>
             <div className='Blogs__cardContainer mt-6 card'>
                 <Carousel
                     value={features}
@@ -77,6 +95,7 @@ const Blogs = () => {
                     circular
                     autoplayInterval={3000}
                     itemTemplate={blogsTemplate}
+                    responsiveOptions={responsiveOptions}
                 />
             </div>
 

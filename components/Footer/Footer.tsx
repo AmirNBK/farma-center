@@ -32,7 +32,7 @@ const Footer = () => {
     ];
 
     return (
-        <div className='footer flex flex-row py-8 justify-around' style={{ background: '#062C48' }}>
+        <div className='footer flex flex-row py-8 justify-around flex-wrap' style={{ background: '#062C48' }}>
             <div className='footer__leftSection flex flex-col text-right gap-y-10' style={{ direction: 'rtl' }}>
                 {leftSections.map((section, index) => (
                     <div key={index}>
@@ -66,7 +66,7 @@ const Footer = () => {
 
             <div className='footer__rightSection flex flex-col items-center'>
                 <Image src={logo} alt='logo' />
-                <h2 className='text-white text-4xl font-bold w-8/12 text-right'> تحول دهنده سلامت مصرف کننده </h2>
+                <h2 className='text-white text-2xl md:text-4xl font-bold w-8/12 text-center md:text-right'> تحول دهنده سلامت مصرف کننده </h2>
             </div>
         </div>
     );
