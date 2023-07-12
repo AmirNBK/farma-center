@@ -42,3 +42,30 @@
         opacity: 1;
     }
 }
+
+
+.aboutusContainer {
+
+    @media screen and (max-width: 1200px) {
+        transform: none;
+    }
+
+    transform: translateX(-400px);
+}
+
+.doctorMockup {
+    transform: translate(665px, -315px);
+
+    @media screen and (max-width: 1200px) {
+        transform: none;
+    }
+}
+
+.polygonPic {
+    transform: translate(390px, -163px);
+
+    @media screen and (max-width: 1200px) {
+        transform: none;
+        margin: 0 auto;
+    }
+}

@@ -61,6 +61,7 @@ const Services = () => {
                 {services.map((service, index) => (
                     <div className={`${isReached && styles.polygon}`}>
                         <PolygonContainer
+                            isResponsive={false}
                             key={index}
                             title={service.title}
                             description={service.description}

@@ -7,17 +7,19 @@ import styles from './PolygonContainer.module.scss'
 const PolygonContainer = (props: {
     title: string;
     description: string;
+    isResponsive: boolean
 }) => {
     const title = props.title;
     const description = props.description;
+    const isResponsive = props.isResponsive
 
     return (
         <div className={`PolygonContainer flex justify-center items-center cursor-pointer ${styles.PolygonContainer}`}>
             <div className="image-container relative">
                 <Image src={polygon} alt="polygonContainer" />
-                <div className="text-container">
-                    <h4 className='text-2xl'>{title}</h4>
-                    <p>{description}</p>
+                <div className={`text-container ${isResponsive ? 'gap-y-3.5 xl:gap-y-6' : 'gap-y-6'}`}>
+                    <h4 className={`${isResponsive ? "text-lg xl:text-2xl" : 'text-2xl'}`}>{title}</h4>
+                    <p className={`${isResponsive && 'text-sm xl:text-base'}`}>{description}</p>
                     <Button text='بیشتر بدانید' />
                 </div>
             </div>
@@ -33,7 +35,6 @@ const PolygonContainer = (props: {
           width: 80%;
           display: flex;
           flex-direction: column;
-          gap: 25px;
         }
       `}</style>
         </div>
