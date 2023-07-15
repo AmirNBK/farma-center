@@ -34,7 +34,7 @@ export default function ContactUs() {
                     <Header HomePageHeader={false} />
                 </div>
 
-                <div className="w-auto	mt-20 h-full rounded-md"
+                <div className="w-auto	mt-20 h-full rounded-md mx-10"
                     style={{
                         background: '#313232', boxShadow: '2px 1px 5px 3px rgba(0,0,0,0.31)'
                     }}>
