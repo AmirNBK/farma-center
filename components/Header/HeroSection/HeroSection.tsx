@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '../CommonComponents/Button/Button';
+import Button from '../../CommonComponents/Button/Button';
 import Image from 'next/image';
-import polygon from '../../assets/Icons/Polygon.svg'
-import cube from '../../assets/Icons/Cube.svg'
-import more from '../../assets/Icons/More.svg'
-import smallPolygon from '../../assets/Icons/SmallPolygon.svg'
+import polygon from '../../../assets/Icons/Polygon.svg'
+import cube from '../../../assets/Icons/Cube.svg'
+import more from '../../../assets/Icons/More.svg'
+import smallPolygon from '../../../assets/Icons/SmallPolygon.svg'
 import style from "./HeroSection.module.scss";
 
 const HeroSection = () => {
@@ -24,7 +24,7 @@ const HeroSection = () => {
                 </div>
             </div>
             <div className='HeroSection__leftSide md:block hidden  relative mr-11' style={{ flex: '1.5' }}>
-                <video src={require('../../assets/Videos/mock.mp4')} className={`mx-auto my-0 w-52 xl:w-auto ${style.HeroSection__video}`}
+                <video src={require('../../../assets/Videos/mock.mp4')} className={`mx-auto my-0 w-52 xl:w-auto ${style.HeroSection__video}`}
                     autoPlay loop muted />
                 <Image src={polygon} className={`absolute right-0 top-10 z-minus ${style.shape}`} alt='polygon' />
                 <Image src={cube} className={`absolute right-0 shape z-minus ${style.cube}`} style={{ top: '-50px' }} alt='cube' />

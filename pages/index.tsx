@@ -1,6 +1,6 @@
 import { Vazirmatn } from 'next/font/google'
 import Header from '../components/Header/Header'
-import HeroSection from '@/components/HeroSection/HeroSection'
+import HeroSection from '@/components/Header/HeroSection/HeroSection'
 import FeaturesSection from '@/components/FeaturesSection/FeaturesSection'
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -13,6 +13,8 @@ import ContactUs from '@/components/ContactUs/ContactUs'
 import Footer from '@/components/Footer/Footer'
 import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
 import style from './index.module.scss'
+import 'primeicons/primeicons.css';
+        
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
 export default function Home() {

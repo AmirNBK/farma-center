@@ -9,7 +9,7 @@ const Header = (props: {
     const HomePageHeader = props.HomePageHeader
     const headerItems = ['سرویس ها', 'راه حل ها', 'بازار ها', 'شرکت', 'تماس با ما']
     return (
-        <div className={`HeaderSection flex sm:flex-row flex-col w-full justify-between items-center px-8 mb-8 sm:mb-16 text-white ${HomePageHeader && 'skew-y-6'} `}>
+        <div className={`HeaderSection flex sm:flex-row flex-col w-full justify-between items-center px-8 text-white ${HomePageHeader && 'skew-y-6 mb-8 sm:mb-16'} `}>
             <Link href={'./'}>
                 <Image src={logo} alt='MainLogo' onClick={() => { }} />
             </Link>
