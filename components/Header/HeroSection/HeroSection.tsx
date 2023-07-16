@@ -6,6 +6,7 @@ import cube from '../../../assets/Icons/Cube.svg'
 import more from '../../../assets/Icons/More.svg'
 import smallPolygon from '../../../assets/Icons/SmallPolygon.svg'
 import style from "./HeroSection.module.scss";
+import Link from 'next/link';
 
 const HeroSection = () => {
     return (
@@ -20,7 +21,9 @@ const HeroSection = () => {
                     تجربه مشاوره در کنار ما بسیار آسان و راحت است. شما می‌توانید از طریق سیستم جستجو، دسته‌بندی‌ها و فیلترهای مختلف به راحتی داروخانه مورد نظر خود را پیدا کنید. همچنین، با دیدن اطلاعات و جزئیات هر فروشگاه، اعتماد نسبت به محصولات و خدمات آن را کسب کنید.
                 </p>
                 <div className='md:text-right text-center'>
-                    <Button text='جستجو کنید' />
+                    <Link href={'/drugstores'}>
+                        <Button text='جستجو کنید' />
+                    </Link>
                 </div>
             </div>
             <div className='HeroSection__leftSide md:block hidden  relative mr-11' style={{ flex: '1.5' }}>
