@@ -1,6 +1,5 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React from 'react';
-import medicine from '../../../assets/Images/medicine.png'
 import styles from '../../Blogs/blogs.module.scss'
 
 const Card = (props: {
@@ -8,18 +7,22 @@ const Card = (props: {
     description: string
     footerText: string
     playAnimation: boolean
+    equalSize?: boolean
+    image: StaticImageData
 }) => {
     const title = props.title
     const description = props.description
     const footerText = props.footerText
     const playAnimation = props.playAnimation
+    const equalSize = props.equalSize
+    const image = props.image
 
     return (
         <div className={`CardContainer ${playAnimation && styles.card}`}>
-            <div className="overflow-hidden shadow-lg bg-white text-right flex flex-col justify-between"
-                style={{ borderRadius: '16px', maxWidth: '22rem', height: '457px' }}
+            <div className="overflow-hidden shadow-lg bg-white text-right flex flex-col justify-between h-fit"
+                style={{ borderRadius: '16px', maxWidth: '22rem', height: equalSize ? '457px' : '' }}
             >
-                <Image className="w-full" src={medicine} alt="Sunset in the mountains" />
+                <Image className="w-full" src={image} alt="Sunset in the mountains" />
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2" style={{ color: '#034D83' }}>{title}</div>
                     <p className="text-gray-700 text-base">

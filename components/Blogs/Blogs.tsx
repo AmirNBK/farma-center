@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Card from '../CommonComponents/Card/Card';
 import { Carousel } from 'primereact/carousel';
 import styles from './blogs.module.scss'
+import medicine from '../../assets/Images/medicine.png'
+
 
 interface Product {
     title: string;
@@ -78,7 +80,9 @@ const Blogs = () => {
     const blogsTemplate = (blogs) => {
         return (
             <div className={`CardsContainer flex flex-row w-full my-12 justify-center`}>
-                <Card title={blogs.title} description={blogs.description} footerText='بیشتر بخوانید' playAnimation={isReached} />
+                <Card title={blogs.title} description={blogs.description} footerText='بیشتر بخوانید' playAnimation={isReached}
+                equalSize image={medicine}
+                />
             </div>
         );
     };
