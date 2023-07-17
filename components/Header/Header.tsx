@@ -8,15 +8,12 @@ const vazir = Vazirmatn({ subsets: ['latin'] })
 
 const Header = (props: {
     HomePageHeader: boolean;
+    headerItems: Record<string, string>;
 }) => {
     const HomePageHeader = props.HomePageHeader;
-    const headerItems = [
-        { label: 'سرویس ها', link: '/' },
-        { label: 'راه حل ها', link: '/' },
-        { label: 'بازار ها', link: '/' },
-        { label: 'درباره ما', link: '/about-us' },
-        { label: 'تماس با ما', link: '/contact-us' },
-    ];
+    const headerItems = props.headerItems;
+
+    const dataArray = Object.entries(headerItems).map(([key, value]) => ({ key, value }));
 
     return (
         <div
@@ -29,10 +26,8 @@ const Header = (props: {
                 <Image src={logo} alt='MainLogo' onClick={() => { }} />
             </Link>
             <div className='flex gap-x-6 flex-row-reverse'>
-                {headerItems.map((item, index) => (
-                    <div className='cursor-pointer sm:text-base text-xs' key={index}>
-                        <Link href={item.link}>{item.label}</Link>
-                    </div>
+                {dataArray.map((item) => (
+                    <div key={item.key}>{item.value}</div>
                 ))}
             </div>
         </div>

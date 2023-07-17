@@ -3,7 +3,12 @@ import tick from '../../assets/Icons/tick.svg';
 import location from '../../assets/Icons/map.svg';
 import Image from 'next/image';
 
-const ProvidedServices = () => {
+const ProvidedServices = (props: {
+    title: string
+    description: string
+}) => {
+    const title = props.title
+    const description = props.description
     const features = [
         {
             icon: tick,
@@ -25,16 +30,15 @@ const ProvidedServices = () => {
 
     return (
         <div className='ProvidedServices my-16 px-8 pt-28 pb-12 sm:pt-60 sm:pb-28'
-            style={{ background: '#2C2929' , transform: 'skewY(-6deg)', margin: '140px 0px' }}
+            style={{ background: '#2C2929', transform: 'skewY(-6deg)', margin: '140px 0px' }}
         >
             <div className='flex flex-col items-center skew-y-6 px-12 2xl:p-0 rtl text-center'>
-                <h3 className='text-white text-2xl sm:text-3xl lg:text-5xl lg:mb-12 mb-0'> ارائه خدمات در سراسر ایران </h3>
+                <h3 className='text-white text-2xl sm:text-3xl lg:text-5xl lg:mb-12 mb-0'> {title}  </h3>
                 <p
                     className='text-white text-base sm:text-xl lg:text-3xl mt-6 text-center'
                     style={{ direction: 'rtl' }}
                 >
-                    با داشتن شبکه‌ی گسترده‌ای از همکاران و همراهان ما در سرتاسر کشور، ما به
-                    شما امکان می‌دهیم تا خدمات موردنیاز خود را با اعتماد کامل دریافت کنید.
+                    {description}
                 </p>
             </div>
 

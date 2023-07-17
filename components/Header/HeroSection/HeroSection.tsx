@@ -8,17 +8,23 @@ import smallPolygon from '../../../assets/Icons/SmallPolygon.svg'
 import style from "./HeroSection.module.scss";
 import Link from 'next/link';
 
-const HeroSection = () => {
+const HeroSection = (props: {
+    title: string
+    description: string
+}) => {
+    const title = props.title
+    const description = props.description
+
     return (
         <div className='HeroSection pr-8 pl-8 md:pl-20 flex flex-row-reverse text-white skew-y-6'>
             <div className={`HeroSection__rightSide flex flex-col text-right flex-1 gap-y-5 ${style.HeroSection__rightSide}`}
                 style={{ direction: 'rtl' }}
             >
                 <h3 className='text-2xl sm:text-3xl lg:text-4xl text-center md:text-start'>
-                    به فارماسنتر خوش آمدید!
+                    {title}
                 </h3>
                 <p className=' md:w-4/5 w-full font-light text-sm sm:text-base lg:text-lg text-center md:text-start' style={{ lineHeight: '30px' }}>
-                    تجربه مشاوره در کنار ما بسیار آسان و راحت است. شما می‌توانید از طریق سیستم جستجو، دسته‌بندی‌ها و فیلترهای مختلف به راحتی داروخانه مورد نظر خود را پیدا کنید. همچنین، با دیدن اطلاعات و جزئیات هر فروشگاه، اعتماد نسبت به محصولات و خدمات آن را کسب کنید.
+                    {description}
                 </p>
                 <div className='md:text-right text-center'>
                     <Link href={'/drugstores'}>

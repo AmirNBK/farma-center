@@ -14,10 +14,16 @@ import Footer from '@/components/Footer/Footer'
 import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
 import style from './index.module.scss'
 import 'primeicons/primeicons.css';
-        
+import { GetStaticProps } from "next";
+import { getPosts, getQueryHomepage } from "@/lib/service";
+
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
-export default function Home() {
+export default function Home({ data }: { data: any }) {
+
+  console.log(data);
+
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center ${vazir.className}`
@@ -28,14 +34,14 @@ export default function Home() {
         <div
           className={`${style.HeroSection}`}
           style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)' }}>
-          <Header HomePageHeader />
-          <HeroSection />
+          <Header HomePageHeader headerItems={data?.HomepageData?.header} />
+          <HeroSection title={data?.HomepageData?.welcomeTitle} description={data?.HomepageData?.welcomeDescription} />
         </div>
         <FeaturesSection />
-        <div style={{ background: '#313232' }} className='w-full  z-0'>
-          <AboutUs />
+        <div style={{ background: '#313232' }} className='w-full z-0'>
+          <AboutUs text={data?.HomepageData?.aboutUsText} />
           <Services />
-          <ProvidedServices />
+          <ProvidedServices title={data?.HomepageData?.locationservices?.title} description={data?.HomepageData?.locationservices?.description} />
           <Blogs />
           <ContactUs />
           <Footer />
@@ -45,3 +51,14 @@ export default function Home() {
     </main>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getQueryHomepage();
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 3600,
+  };
+};
