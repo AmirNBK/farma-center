@@ -3,7 +3,10 @@ import Title from '../CommonComponents/Title/Title';
 import PolygonContainer from '../CommonComponents/PolygonContainer/PolygonContainer';
 import styles from './Services.module.scss'
 
-const Services = () => {
+const Services = (props : {
+    data : []
+}) => {
+    const services = props.data
     const servicesRef = useRef(null);
     const [isReached, setIsReached] = useState(false)
 
@@ -25,32 +28,6 @@ const Services = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    const services = [
-        {
-            title: 'تجربه مشاوره آسان',
-            description: 'تجربه مشاوره آسان و موثر برای مشتریان',
-        },
-        {
-            title: 'اعتماد و رضایت',
-            description: 'اعتماد و رضایت مشتریان اولویت ما است',
-        },
-        {
-            title: 'اکتشاف کنید',
-            description: 'تجمع فروشگاه‌های داروخانه در یک مکان آنلاین مرکزی',
-        },
-        {
-            title: 'جستجوی پیشرفته',
-            description: 'جستجوی پیشرفته برای پیدا کردن داروخانه موردنظر',
-        },
-        {
-            title: 'داروخانه ‌های معتبر',
-            description: 'همکاری با داروخانه ‌های معتبر و با سابقه',
-        },
-        {
-            title: 'خدمات پشتیبانی',
-            description: 'خدمات پشتیبانی قوی و ارسال سریع سفارشات',
-        },
-    ];
 
     return (
         <div className='Services mb-20' ref={servicesRef}>
@@ -58,7 +35,7 @@ const Services = () => {
                 <Title title='خدمات' />
             </div>
             <div className='flex flex-row flex-wrap justify-evenly my-6 gap-12 px-7 sm:p-0 sm:text-base text-sm'>
-                {services.map((service, index) => (
+                {services?.map((service, index) => (
                     <div className={`${isReached && styles.polygon}`}>
                         <PolygonContainer
                             isResponsive={false}

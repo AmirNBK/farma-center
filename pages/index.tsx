@@ -35,15 +35,15 @@ export default function Home({ data }: { data: any }) {
           className={`${style.HeroSection}`}
           style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)' }}>
           <Header HomePageHeader headerItems={data?.HomepageData?.header} />
-          <HeroSection title={data?.HomepageData?.welcomeTitle} description={data?.HomepageData?.welcomeDescription} />
+          <HeroSection data={data?.HomepageData?.heroSection[0]} />
         </div>
-        <FeaturesSection />
+        <FeaturesSection data={data?.HomepageData?.featuresSection} />
         <div style={{ background: '#313232' }} className='w-full z-0'>
-          <AboutUs text={data?.HomepageData?.aboutUsText} />
-          <Services />
-          <ProvidedServices title={data?.HomepageData?.locationservices?.title} description={data?.HomepageData?.locationservices?.description} />
-          <Blogs />
-          <ContactUs />
+          <AboutUs text={data?.HomepageData?.aboutUsSection} />
+          <Services data={data?.HomepageData?.servicesSection} />
+          <ProvidedServices data={data?.HomepageData?.locationservices[0]} />
+          <Blogs data={data?.HomepageData?.blogs} />
+          <ContactUs data={data?.HomepageData?.contactUsSection[0]} />
           <Footer />
           <PoliciesSection />
         </div>

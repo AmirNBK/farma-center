@@ -1,5 +1,5 @@
 import { Vazirmatn } from 'next/font/google'
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../assets/Icons/MainLogo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,12 +8,10 @@ const vazir = Vazirmatn({ subsets: ['latin'] })
 
 const Header = (props: {
     HomePageHeader: boolean;
-    headerItems: Record<string, string>;
+    headerItems: [];
 }) => {
     const HomePageHeader = props.HomePageHeader;
     const headerItems = props.headerItems;
-
-    const dataArray = Object.entries(headerItems).map(([key, value]) => ({ key, value }));
 
     return (
         <div
@@ -26,8 +24,8 @@ const Header = (props: {
                 <Image src={logo} alt='MainLogo' onClick={() => { }} />
             </Link>
             <div className='flex gap-x-6 flex-row-reverse'>
-                {dataArray.map((item) => (
-                    <div key={item.key}>{item.value}</div>
+                {headerItems.map((item) => (
+                    <Link href={`${item?.menu?.url}`} key={item.key}>{item?.menu?.title}</Link>
                 ))}
             </div>
         </div>

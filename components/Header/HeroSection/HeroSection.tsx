@@ -9,11 +9,9 @@ import style from "./HeroSection.module.scss";
 import Link from 'next/link';
 
 const HeroSection = (props: {
-    title: string
-    description: string
+    data: [{}]
 }) => {
-    const title = props.title
-    const description = props.description
+    const data = props.data
 
     return (
         <div className='HeroSection pr-8 pl-8 md:pl-20 flex flex-row-reverse text-white skew-y-6'>
@@ -21,14 +19,14 @@ const HeroSection = (props: {
                 style={{ direction: 'rtl' }}
             >
                 <h3 className='text-2xl sm:text-3xl lg:text-4xl text-center md:text-start'>
-                    {title}
+                    {data?.welcomeTitle}
                 </h3>
                 <p className=' md:w-4/5 w-full font-light text-sm sm:text-base lg:text-lg text-center md:text-start' style={{ lineHeight: '30px' }}>
-                    {description}
+                    {data.welcomeDescription}
                 </p>
                 <div className='md:text-right text-center'>
                     <Link href={'/drugstores'}>
-                        <Button text='جستجو کنید' />
+                        <Button text={`${data.button}`} />
                     </Link>
                 </div>
             </div>

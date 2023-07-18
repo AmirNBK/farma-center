@@ -28,28 +28,64 @@ export async function getPosts(first = 10) {
 
 export async function getQueryHomepage() {
     const data = await fetchAPI(
-        `query MyQuery {
-            pages {
-              nodes {
-                HomepageData {
-                  welcomeTitle
-                  welcomeDescription
-                  aboutUsText
-                  locationservices {
-                    description
+        `query NewQuery {
+          pages(first: 10) {
+            nodes {
+              id
+              HomepageData {
+                featuresSection {
+                  slide {
+                    slideTitle
+                    slideDescription
+                    slideImage {
+                      mediaDetails {
+                        file
+                      }
+                    }
+                  }
+                }
+                header {
+                  menu {
                     title
+                    url
                   }
-                  header {
-                    aboutUs
-                    contactUs
-                    markets
-                    services
-                    solutions
+                }
+                heroSection {
+                  button
+                  welcomeDescription
+                  welcomeTitle
+                }
+                aboutUsSection
+                servicesSection {
+                  title
+                  description
+                }
+                locationservices {
+                  description
+                  title
+                  features {
+                    label
+                    icon {
+                      mediaItemUrl
+                    }
                   }
+                }
+                blogs {
+                  description
+                  title
+                  image {
+                    mediaItemUrl
+                  }
+                }
+                contactUsSection {
+                  buttonLabel
+                  description
+                  title
                 }
               }
             }
-          }`,
+          }
+        }`,
     );
 
     return data?.pages?.nodes[0];
