@@ -15,15 +15,12 @@ import PoliciesSection from '@/components/PoliciesSection/PoliciesSection'
 import style from './index.module.scss'
 import 'primeicons/primeicons.css';
 import { GetStaticProps } from "next";
-import { getPosts, getQueryHomepage } from "@/lib/service";
+import { getPosts, getQueryFooter, getQueryHeader, getQueryHomepage, getQueryPolicies } from "@/lib/service";
 
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
-export default function Home({ data }: { data: any }) {
-
-  console.log(data);
-
-
+export default function Home({ data, headerData, footerData , policiesData }: { data: any, headerData: any, footerData: any , policiesData : any }) {
+  
   return (
     <main
       className={`flex min-h-screen flex-col items-center ${vazir.className}`
@@ -34,7 +31,7 @@ export default function Home({ data }: { data: any }) {
         <div
           className={`${style.HeroSection}`}
           style={{ backgroundColor: '#313232', zIndex: '1', transform: 'skewY(-6deg)' }}>
-          <Header HomePageHeader headerItems={data?.HomepageData?.header} />
+          <Header HomePageHeader headerItems={headerData?.HeaderItems?.items} />
           <HeroSection data={data?.HomepageData?.heroSection[0]} />
         </div>
         <FeaturesSection data={data?.HomepageData?.featuresSection} />
@@ -44,8 +41,8 @@ export default function Home({ data }: { data: any }) {
           <ProvidedServices data={data?.HomepageData?.locationservices[0]} />
           <Blogs data={data?.HomepageData?.blogs} />
           <ContactUs data={data?.HomepageData?.contactUsSection[0]} />
-          <Footer />
-          <PoliciesSection />
+          <Footer data={footerData?.FooterData?.footer[0]} />
+          <PoliciesSection data={policiesData?.policiesSectionData?.policiesSection[0]} />
         </div>
       </PrimeReactProvider>
     </main>
@@ -54,10 +51,16 @@ export default function Home({ data }: { data: any }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getQueryHomepage();
+  const headerData = await getQueryHeader();
+  const footerData = await getQueryFooter();
+  const policiesData = await getQueryPolicies();
 
   return {
     props: {
       data,
+      headerData,
+      footerData,
+      policiesData
     },
     revalidate: 3600,
   };

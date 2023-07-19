@@ -12,6 +12,7 @@ const Header = (props: {
 }) => {
     const HomePageHeader = props.HomePageHeader;
     const headerItems = props.headerItems;
+    
 
     return (
         <div
@@ -24,8 +25,8 @@ const Header = (props: {
                 <Image src={logo} alt='MainLogo' onClick={() => { }} />
             </Link>
             <div className='flex gap-x-6 flex-row-reverse'>
-                {headerItems.map((item) => (
-                    <Link href={`${item?.menu?.url}`} key={item.key}>{item?.menu?.title}</Link>
+                {headerItems?.map((item) => (
+                    <Link href={`${item?.label?.url}`} key={item.key}>{item?.label?.title}</Link>
                 ))}
             </div>
         </div>

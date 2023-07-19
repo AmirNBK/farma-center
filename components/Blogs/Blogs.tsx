@@ -16,9 +16,6 @@ const Blogs = (props : {
 }) => {
     const data = props.data
 
-    console.log(data);
-    
-
     const responsiveOptions = [
         {
             breakpoint: '2300px',
