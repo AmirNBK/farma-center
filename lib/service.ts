@@ -184,3 +184,24 @@ export async function getQueryPolicies() {
 
   return data?.pages?.nodes[0];
 }
+
+
+export async function getQueryContactUs() {
+  const data = await fetchAPI(
+    `query ContactUs {
+      pages {
+        nodes {
+          contactUsData {
+            info {
+              address
+              phone
+            }
+          }
+        }
+      }
+    }
+    `,
+  );
+
+  return data?.pages?.nodes[0];
+}
