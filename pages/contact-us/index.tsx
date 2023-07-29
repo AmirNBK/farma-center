@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from "@/components/Header/Header";
 import { Vazirmatn } from 'next/font/google'
 import support from '../../assets/Images/support.jpg'
@@ -15,16 +15,20 @@ import loc from '../../assets/Icons/location.svg'
 import telephone from '../../assets/Icons/contact.svg'
 import { getQueryContactUs, getQueryFooter, getQueryHeader, getQueryPolicies } from '@/lib/service';
 import { GetStaticProps } from "next";
+import emailjs from '@emailjs/browser';
+import axios from 'axios'
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
 
 export default function ContactUs({ data, headerData, footerData, policiesData }: { data: any, headerData: any, footerData: any, policiesData: any }) {
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        user_email: '',
         phone: '',
         message: '',
     });
+
+    const form = useRef<any>();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -34,10 +38,16 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
         }));
     };
 
-    const handleSubmit = () => {
-        // Do something with the formData, for example, send it to the server
-        console.log(formData);
+    const sendEmail = (e) => {
+        emailjs.sendForm('service_yqx7wnr', 'template_75og5gr', form.current , 'Xei6xsGOfGj_36PRv')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     };
+
+
     return (
         <PrimeReactProvider>
             <div className={`flex min-h-screen flex-col items-center ${vazir.className}`} style={{ background: '#313232' }}>
@@ -45,7 +55,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                     <Header HomePageHeader={false} headerItems={headerData?.HeaderItems?.items} />
                 </div>
 
-                <div className="w-auto mt-20 h-full rounded-md mx-10" style={{ background: '#313232', boxShadow: '2px 1px 5px 3px rgba(0,0,0,0.31)' }}>
+                <form ref={form} className="w-auto mt-20 h-full rounded-md mx-10" style={{ background: '#313232', boxShadow: '2px 1px 5px 3px rgba(0,0,0,0.31)' }}>
                     <div className="flex flex-row">
                         <div className="flex-1 hidden xl:block">
                             <Image src={support} alt="support" className="object-cover rounded-md rounded-tr-none rounded-br-none h-full" />
@@ -61,7 +71,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                                         <label htmlFor="username">نام و نام خانوادگی</label>
                                     </span>
                                     <span className="p-float-label rtl" style={{ direction: 'rtl' }}>
-                                        <InputText name="email" id="username" className='w-full' value={formData.email} onChange={handleChange} />
+                                        <InputText name="user_email" id="username" className='w-full' value={formData.email} onChange={handleChange} />
                                         <label htmlFor="username"> ایمیل </label>
                                     </span>
                                     <span className="p-float-label rtl" style={{ direction: 'rtl' }}>
@@ -78,7 +88,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                                 </div>
 
                                 <div className={`text-center mt-5  ${vazir.className}`}>
-                                    <Button label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} onClick={handleSubmit} />
+                                    <Button label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} onClick={sendEmail} />
                                 </div>
 
                                 <div className='flex flex-row items-center flex-row-reverse gap-3 mt-12'>
@@ -97,7 +107,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
 
                 <div className='w-full mt-20'>
                     <Footer data={footerData?.FooterData?.footer[0]} />
