@@ -53,9 +53,8 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                             </div>
                         </div>
                     </div>
-
                     <div className='w-full text-center my-10'>
-                        <Button style={{ padding: '7px 50px' }} >
+                        <Button style={{ padding: '7px 65px' , background : '#EBDAB2' , color : 'black' , border : "none" }}>
                             ثبت
                         </Button>
                     </div>
