@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Vazirmatn } from 'next/font/google';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -14,10 +14,21 @@ import { getQueryDrugstores, getQueryFooter, getQueryHeader, getQueryPolicies } 
 
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
-export default function AboutUs({ data, headerData, footerData, policiesData }: { data: any, headerData: any, footerData: any, policiesData: any }) {
+type DrugstoreType = {
+    drugstoreName: string;
+    description: string;
+};
 
-    console.log(data.drugstores.drugstoresList);
-    
+export default function AboutUs({ data, headerData, footerData, policiesData }: { data: any, headerData: any, footerData: any, policiesData: any }) {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+    };
+
+    const filteredDrugstores: DrugstoreType[] = data.drugstores.drugstoresList?.filter((drugstore: DrugstoreType) =>
+        drugstore.drugstoreName.includes(searchTerm)
+    );
 
     return (
         <div className={`flex min-h-screen flex-col items-center AboutUs mt-15 ${vazir.className}`}
@@ -25,10 +36,10 @@ export default function AboutUs({ data, headerData, footerData, policiesData }: 
         >
             <Header HomePageHeader={false} headerItems={headerData?.HeaderItems?.items} />
             <div className='mt-10 sm:m-0 w-full'>
-                <DrugstoresSearch />
+                <DrugstoresSearch onSearch={handleSearch} />
             </div>
             <div className="card flex searchResults w-96 justify-content-center my-16 flex-row w-full gap-24 flex-wrap justify-center">
-                {data.drugstores.drugstoresList?.map((card, index) => (
+                {filteredDrugstores?.map((card, index) => (
                     <Card
                         key={index}
                         title={card.drugstoreName}
