@@ -16,15 +16,16 @@ import telephone from '../../assets/Icons/contact.svg'
 import { getQueryContactUs, getQueryFooter, getQueryHeader, getQueryPolicies } from '@/lib/service';
 import { GetStaticProps } from "next";
 import emailjs from '@emailjs/browser';
-import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
 
 export default function ContactUs({ data, headerData, footerData, policiesData }: { data: any, headerData: any, footerData: any, policiesData: any }) {
     const [formData, setFormData] = useState({
-        name: '',
+        user_name: '',
         user_email: '',
-        phone: '',
+        user_phone: '',
         message: '',
     });
 
@@ -38,14 +39,68 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
         }));
     };
 
-    const sendEmail = (e) => {
-        emailjs.sendForm('service_yqx7wnr', 'template_75og5gr', form.current , 'Xei6xsGOfGj_36PRv')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+    const successfulToast = (text: string) => {
+        toast.success(text, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
     };
+
+    const WarningToast = (text: string) => {
+        toast.warning(text, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    };
+
+    const validation = (e) => {
+        e.preventDefault();
+        const { user_name, user_email, user_phone } = formData;
+        
+        if (user_name.trim().length < 3) {
+          WarningToast('نام و نام خانوادگی باید حداقل شامل 3 حرف باشد');
+          return;
+        }
+      
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(user_email)) {
+          WarningToast('ایمیل وارد شده معتبر نیست');
+          return;
+        }
+      
+        if (user_phone.replace(/[^0-9]/g, '').length < 7) {
+          WarningToast('شماره تماس باید حداقل 7 رقم باشد');
+          return;
+        }
+        sendEmail();
+      };
+      
+      
+      const sendEmail = () => {
+        emailjs
+          .sendForm('service_yqx7wnr', 'template_hjxmxkm', form.current, 'Xei6xsGOfGj_36PRv')
+          .then((result) => {
+            successfulToast('پیام شما با موفقیت ارسال شد');
+          })
+          .catch((error) => {
+            WarningToast(error.text)
+          });
+      };
+      
+
+
 
 
     return (
@@ -67,15 +122,15 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                             <div className='w-full'>
                                 <div className='flex flex-col xl:flex-row-reverse w-full justify-between gap-8'>
                                     <span className="p-float-label rtl" style={{ direction: 'rtl' }}>
-                                        <InputText name="name" id="username" className='w-full' value={formData.name} onChange={handleChange} />
+                                        <InputText name="user_name" id="username" className='w-full' value={formData.user_name} onChange={handleChange} />
                                         <label htmlFor="username">نام و نام خانوادگی</label>
                                     </span>
                                     <span className="p-float-label rtl" style={{ direction: 'rtl' }}>
-                                        <InputText name="user_email" id="username" className='w-full' value={formData.email} onChange={handleChange} />
+                                        <InputText name="user_email" id="username" className='w-full' value={formData.user_email} onChange={handleChange} />
                                         <label htmlFor="username"> ایمیل </label>
                                     </span>
                                     <span className="p-float-label rtl" style={{ direction: 'rtl' }}>
-                                        <InputText name="phone" id="username" placeholder='' className='w-full' value={formData.phone} onChange={handleChange} />
+                                        <InputText name="user_phone" id="username" placeholder='' className='w-full' value={formData.user_phone} onChange={handleChange} />
                                         <label htmlFor="username"> شماره تماس </label>
                                     </span>
                                 </div>
@@ -88,7 +143,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                                 </div>
 
                                 <div className={`text-center mt-5  ${vazir.className}`}>
-                                    <Button label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} onClick={sendEmail} />
+                                    <Button label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} onClick={validation} />
                                 </div>
 
                                 <div className='flex flex-row items-center flex-row-reverse gap-3 mt-12'>
@@ -105,6 +160,18 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                                     </p>
                                 </div>
                             </div>
+                            <ToastContainer
+                                position="bottom-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={true}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="dark"
+                            />
                         </div>
                     </div>
                 </form>
