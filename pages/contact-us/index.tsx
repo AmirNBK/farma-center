@@ -98,9 +98,6 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
             WarningToast(error.text)
           });
       };
-      
-
-
 
 
     return (

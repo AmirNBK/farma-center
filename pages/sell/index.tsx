@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Vazirmatn } from 'next/font/google'
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -14,15 +14,99 @@ import PoliciesSection from '@/components/PoliciesSection/PoliciesSection';
 import medicalBanner from '../../assets/Images/medicalBanner.jpg'
 import Image from 'next/image';
 import Select from 'react-select'
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const vazir = Vazirmatn({ subsets: ['latin'] })
 export default function Sell({ headerData, footerData, policiesData }: { headerData: any, footerData: any, policiesData: any }) {
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
+    const { shahr } = require("iran-cities-json");
+
+    const shahrOptions = shahr.map((city) => ({
+        value: city.name,
+        label: city.name,
+    }));
+
+
+    const [formData, setFormData] = useState({
+        city: '',
+        daily_sales: '',
+        insurance: '',
+        name: '',
+        metre: '',
+        rent: '',
+        email: '',
+        phone: ''
+      });
+
+    const successfulToast = (text: string) => {
+        toast.success(text, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    };
+
+    const WarningToast = (text: string) => {
+        toast.warning(text, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    };
+
+    const [selectedCity, setSelectedCity] = useState('');
+
+    const form = useRef<any>();
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+      };
+
+    const handleCityChange = (selectedOption: { value: string; label: string } | null) => {
+        setSelectedCity(selectedOption?.value || '');
+    };
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const isAllFieldsEmpty = Object.values(formData).every((value) => value === '');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isEmailValid = emailRegex.test(formData.email);
+        const phoneRegex = /^[0-9]{11}$/;
+        const isPhoneValid = phoneRegex.test(formData.phone);
+
+        if (isAllFieldsEmpty) {
+            WarningToast('لطفاً اطلاعات داروخانه را وارد کنید.');
+        } else if (!isEmailValid) {
+            WarningToast('لطفاً ایمیل معتبر وارد کنید.');
+        } else if (!isPhoneValid) {
+            WarningToast('لطفاً شماره تلفن معتبر وارد کنید (شامل 11 عدد).');
+        } else {
+            emailjs
+                .sendForm('service_yqx7wnr', 'template_qsbiqhv', form.current, 'Xei6xsGOfGj_36PRv')
+                .then((result) => {
+                    successfulToast('درخواست شما با موفقیت ثبت شد');
+                })
+                .catch((error) => {
+                    WarningToast(error.text)
+                });
+        }
+    };
+
 
     return (
         <div className={`flex min-h-screen flex-col items-center AboutUs mt-15 ${vazir.className}`}
@@ -32,37 +116,108 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
 
 
             <div className='mainContainer flex flex-row-reverse gap-6'>
-                <div className='InfosForm flex-1 px-8'>
+                <form ref={form} className='InfosForm flex-1 px-8'>
                     <InfoContainer info='خوش آمدید! در این صفحه اطلاعات مربوط به داروخانه خود را میتوانید وارد کنید و به فروش بگذارید تا توسط خریداران مشاهده شود. اگر سوالی داشتید میتوانید با مشاوران ما در ارتباط باشید.' icon={icon} />
                     <h3 className='text-white text-3xl font-semibold my-10 text-right gap-6'>
                         اطلاعات داروخانه خود را وارد نمایید
                     </h3>
                     <div className='flex flex-col gap-6'>
-                        <Select options={options} placeholder="شهر موردنظر را انتخاب کنید" className='rtl' minMenuHeight={50} />
+                        <Select
+                            options={shahrOptions}
+                            placeholder="شهر موردنظر را انتخاب کنید"
+                            className='rtl'
+                            minMenuHeight={50}
+                            value={shahrOptions.find(option => option.value === selectedCity)}
+                            onChange={handleCityChange}
+                            name='city'
+                        />
                         <div className='flex flex-col gap-6'>
                             <div className='flex flex-row w-full justify-between gap-6'>
-                                <InputText placeholder='فروش روزانه' className='text-right w-full' />
-                                <InputText placeholder='مبلغ بیمه ماهانه' className='text-right w-full' />
+                                <InputText
+                                    name='daily_sales'
+                                    value={formData.daily_sales}
+                                    onChange={handleChange}
+                                    placeholder='فروش روزانه'
+                                    className='text-right w-full'
+                                />
+                                <InputText
+                                    name='insurance'
+                                    value={formData.insurance}
+                                    onChange={handleChange}
+                                    placeholder='مبلغ بیمه ماهانه'
+                                    className='text-right w-full'
+                                />
                             </div>
                             <div className=''>
-                                <InputText placeholder='نام داروخانه' className='text-right w-full' />
+                                <InputText
+                                    name='name'
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder='نام داروخانه'
+                                    className='text-right w-full'
+                                />
                             </div>
                             <div className='flex flex-row w-full justify-between gap-6'>
-                                <InputText placeholder='متراژ داروخانه' className='text-right w-full' />
-                                <InputText placeholder='رهن و اجاره ملک' className='text-right w-full' />
+                                <InputText
+                                    name='metre'
+                                    value={formData.metre}
+                                    onChange={handleChange}
+                                    placeholder='متراژ داروخانه'
+                                    className='text-right w-full'
+                                />
+                                <InputText
+                                    name='rent'
+                                    value={formData.rent}
+                                    onChange={handleChange}
+                                    placeholder='رهن و اجاره ملک'
+                                    className='text-right w-full'
+                                />
+                            </div>
+
+                            <div className='flex flex-row w-full justify-between gap-6'>
+                                <InputText
+                                    name='email'
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder='ایمیل'
+                                    className='text-right w-full'
+                                />
+                                <InputText
+                                    name='phone'
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder='شماره تلفن'
+                                    className='text-right w-full'
+                                />
                             </div>
                         </div>
                     </div>
                     <div className='w-full text-center my-10'>
-                        <Button style={{ padding: '7px 65px' , background : '#EBDAB2' , color : 'black' , border : "none" }}>
+                        <Button
+                            style={{ padding: '7px 65px', background: '#EBDAB2', color: 'black', border: 'none' }}
+                            onClick={handleSubmit}
+                        >
                             ثبت
                         </Button>
                     </div>
-                </div>
+                </form>
                 <div className='SellImage flex-1'>
-                    <Image src={medicalBanner} alt='banner' className='h-full object-cover' style={{borderTopRightRadius : '6px' , borderBottomRightRadius : '6px'}} />
+                    <Image src={medicalBanner} alt='banner' className='h-full object-cover' style={{ borderTopRightRadius: '6px', borderBottomRightRadius: '6px' }} />
                 </div>
             </div>
+
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={true}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
 
             <div className='w-full'>
                 <Footer data={footerData?.FooterData?.footer[0]} />
