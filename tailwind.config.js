@@ -5,7 +5,11 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 module.exports = withMT({
   content: ["./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        '128': '32rem',
+      }
+    },
   },
   plugins: [],
 });

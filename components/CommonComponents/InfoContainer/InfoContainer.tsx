@@ -8,8 +8,8 @@ const InfoContainer = (props: {
     const icon = props.icon
     const info = props.info
     return (
-        <div className='InfoContainer flex items-center rounded-md flex-row-reverse gap-x-4 ml-auto'
-            style={{ background: '#eeee' , direction : 'rtl' , width : '620px', padding : '18px 24px' }}
+        <div className='InfoContainer flex items-center mt-12 sm:m-0 rounded-md flex-col-reverse sm:flex-row-reverse gap-4 ml-auto w-fit'
+            style={{ background: '#eeee' , direction : 'rtl' , padding : '18px 24px' }}
         >
             <p className='font-light'>
                 {info}

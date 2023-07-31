@@ -138,14 +138,14 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                     value={formData.daily_sales}
                                     onChange={handleChange}
                                     placeholder='فروش روزانه'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                                 <InputText
                                     name='insurance'
                                     value={formData.insurance}
                                     onChange={handleChange}
                                     placeholder='مبلغ بیمه ماهانه'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                             </div>
                             <div className=''>
@@ -154,7 +154,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder='نام داروخانه'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                             </div>
                             <div className='flex flex-row w-full justify-between gap-6'>
@@ -163,14 +163,14 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                     value={formData.metre}
                                     onChange={handleChange}
                                     placeholder='متراژ داروخانه'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                                 <InputText
                                     name='rent'
                                     value={formData.rent}
                                     onChange={handleChange}
                                     placeholder='رهن و اجاره ملک'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                             </div>
 
@@ -180,14 +180,14 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder='ایمیل'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                                 <InputText
                                     name='phone'
                                     value={formData.phone}
                                     onChange={handleChange}
                                     placeholder='شماره تلفن'
-                                    className='text-right w-full'
+                                    className='text-right w-full rtl'
                                 />
                             </div>
                         </div>
@@ -201,7 +201,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                         </Button>
                     </div>
                 </form>
-                <div className='SellImage flex-1'>
+                <div className='SellImage flex-1 xl:block hidden'>
                     <Image src={medicalBanner} alt='banner' className='h-full object-cover' style={{ borderTopRightRadius: '6px', borderBottomRightRadius: '6px' }} />
                 </div>
             </div>

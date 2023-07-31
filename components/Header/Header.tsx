@@ -16,7 +16,8 @@ const Header = (props: {
 
     return (
         <div
-            className={`HeaderSection flex sm:flex-row flex-col w-full justify-between items-center px-8 text-white
+            className={`HeaderSection flex sm:flex-row flex-col w-full justify-between items-center px-0 sm:px-8 text-white
+            text-sm sm:text-base
             ${vazir.className}
             ${HomePageHeader && 'skew-y-6 mb-8 sm:mb-16'
                 } `}

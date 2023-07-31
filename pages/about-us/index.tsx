@@ -11,6 +11,7 @@ import companyPic2 from '../../assets/Images/companyPic2.jpeg';
 import { Button } from 'primereact/button';
 import { getQueryAboutUs, getQueryFooter, getQueryHeader, getQueryPolicies } from '@/lib/service';
 import { GetStaticProps } from "next";
+import Link from 'next/link';
 
 const vazir = Vazirmatn({ subsets: ['latin'] });
 
@@ -29,16 +30,18 @@ export default function AboutUs({ data, headerData, footerData, policiesData }: 
     return (
         <div className={`flex min-h-screen flex-col items-center AboutUs mt-15 ${vazir.className}`} style={{ background: '#313232' }}>
             <Header HomePageHeader={false} headerItems={headerData?.HeaderItems?.items} />
-            <h1 className='text-3xl font-semibold text-white'> درباره ما </h1>
+            <h1 className='text-3xl font-semibold text-white mt-10 sm:m-0'> درباره ما </h1>
             <div className='flex xl:flex-row flex-col items-center gap-10 sm:gap-20 mt-10 px-8'>
                 <Image src={companyPic} alt='pic' className='rounded-md' style={{ flex: '1', width: '700px' }} />
                 <div className='AboutUs__descriptions text-white flex items-center xl:items-start flex-col justify-between' style={{ direction: 'rtl', flex: '2' }}>
                     <p className='text-lg'>
                         {renderWithLineBreaks(data?.AboutUsData?.aboutUs)}
                     </p>
-                    <button className='w-fit' style={{ border: '1px solid #ebdab2', color: '#ebdab2', padding: '8px 35px', margin: '20px 0px', borderRadius: '6px' }}>
-                        تماس با ما
-                    </button>
+                    <Link href={'./contact-us'}>
+                        <button className='w-fit' style={{ border: '1px solid #ebdab2', color: '#ebdab2', padding: '8px 35px', margin: '20px 0px', borderRadius: '6px' }}>
+                            تماس با ما
+                        </button>
+                    </Link>
                 </div>
             </div>
 
