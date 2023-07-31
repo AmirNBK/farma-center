@@ -30,9 +30,9 @@ const ProvidedServices = (props: {
                 autoPlay loop muted />
 
             <div className='ProvidedServices__features mt-10 md:m-0 flex-wrap gap-12 px-5 flex flex-row-reverse justify-around items-baseline skew-y-6'>
-                {data?.features?.map((feature, index) => (
+                {data?.features?.map((feature, index) => (                    
                     <div className='ProvidedServices__features__item flex flex-col items-center' key={index}>
-                        <Image src={feature.icon} alt='tick' />
+                        <Image src={index === 0 ? tick : index === 2 ? tick : location} width={30} height={30} alt='featuresPics' />
                         <p style={{ color: '#EBDAB2' }} className='mt-2 sm:text-base text-xs'>{feature.label}</p>
                     </div>
                 ))}

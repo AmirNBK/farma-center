@@ -19,11 +19,12 @@ const FeaturesSection = (props : {
     data : Product
 }) => {
     const data = props.data
+    
 
     const productTemplate = (product: Product) => {
         return (
             <div className={`flex flex-col text-center items-center gap-3 py-6 ${vazir.className}`}>
-                {/* <Image src={product?.slide?.slideImage?.mediaItemUrl} alt='drugstoreICon' className='w-16' width={16} height={16} /> */}
+                <Image src={product?.slide?.slideImage?.mediaItemUrl || drugstore} alt='drugstoreICon' className='w-16' width={16} height={16} />
                 <h3 className='text-2xl'>{product?.slide?.slideTitle}</h3>
                 <p className='text-xl' style={{ direction: 'rtl' }}>{product?.slide?.slideDescription}</p>
             </div>
