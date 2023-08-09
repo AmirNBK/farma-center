@@ -65,39 +65,45 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
         });
     };
 
-    const validation = (e) => {
+    const validation = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { user_name, user_email, user_phone } = formData;
-        
+
         if (user_name.trim().length < 3) {
-          WarningToast('نام و نام خانوادگی باید حداقل شامل 3 حرف باشد');
-          return;
+            WarningToast('نام و نام خانوادگی باید حداقل شامل 3 حرف باشد');
+            return;
         }
-      
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(user_email)) {
-          WarningToast('ایمیل وارد شده معتبر نیست');
-          return;
+            WarningToast('ایمیل وارد شده معتبر نیست');
+            return;
         }
-      
+
         if (user_phone.replace(/[^0-9]/g, '').length < 7) {
-          WarningToast('شماره تماس باید حداقل 7 رقم باشد');
-          return;
+            WarningToast('شماره تماس باید حداقل 7 رقم باشد');
+            return;
         }
         sendEmail();
-      };
-      
-      
-      const sendEmail = () => {
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        validation(e);
+    };
+
+
+
+    const sendEmail = () => {
         emailjs
-          .sendForm('service_yqx7wnr', 'template_hjxmxkm', form.current, 'Xei6xsGOfGj_36PRv')
-          .then((result) => {
-            successfulToast('پیام شما با موفقیت ارسال شد');
-          })
-          .catch((error) => {
-            WarningToast(error.text)
-          });
-      };
+            .sendForm('service_yqx7wnr', 'template_hjxmxkm', form.current, 'Xei6xsGOfGj_36PRv')
+            .then((result) => {
+                successfulToast('پیام شما با موفقیت ارسال شد');
+            })
+            .catch((error) => {
+                WarningToast(error.text)
+            });
+    };
 
 
     return (
@@ -107,7 +113,10 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                     <Header HomePageHeader={false} headerItems={headerData?.HeaderItems?.items} />
                 </div>
 
-                <form ref={form} className="w-auto mt-20 h-full rounded-md mx-10" style={{ background: '#313232', boxShadow: '2px 1px 5px 3px rgba(0,0,0,0.31)' }}>
+                <form ref={form} className="w-auto mt-20 h-full rounded-md mx-10"
+                    style={{ background: '#313232', boxShadow: '2px 1px 5px 3px rgba(0,0,0,0.31)' }}
+                    onSubmit={handleSubmit}
+                >
                     <div className="flex flex-row">
                         <div className="flex-1 hidden xl:block">
                             <Image src={support} alt="support" className="object-cover rounded-md rounded-tr-none rounded-br-none h-full" />
@@ -140,7 +149,7 @@ export default function ContactUs({ data, headerData, footerData, policiesData }
                                 </div>
 
                                 <div className={`text-center mt-5  ${vazir.className}`}>
-                                    <Button label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} onClick={validation} />
+                                    <Button type="submit" label="ارسال" className='text-black' style={{ background: '#EBDAB2', color: 'black', border: 'none', width: '150px', fontWeight: 'normal' }} />
                                 </div>
 
                                 <div className='flex flex-row items-center flex-row-reverse gap-3 mt-12'>
