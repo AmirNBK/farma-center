@@ -3,11 +3,14 @@ import Title from '../CommonComponents/Title/Title';
 import PolygonContainer from '../CommonComponents/PolygonContainer/PolygonContainer';
 import styles from './Services.module.scss'
 
-const Services = (props : {
-    data : []
+const Services = (props: {
+    data: {
+        title: string;
+        description: string;
+    }[];
 }) => {
     const services = props.data
-    const servicesRef = useRef(null);
+    const servicesRef = useRef<HTMLDivElement>(null);
     const [isReached, setIsReached] = useState(false)
 
     useEffect(() => {
@@ -36,10 +39,9 @@ const Services = (props : {
             </div>
             <div className='flex flex-row flex-wrap justify-evenly my-6 gap-12 px-7 sm:p-0 sm:text-base text-sm'>
                 {services?.map((service, index) => (
-                    <div className={`${isReached && styles.polygon}`}>
+                    <div key={index} className={`${isReached && styles.polygon}`}>
                         <PolygonContainer
                             isResponsive={false}
-                            key={index}
                             title={service.title}
                             description={service.description}
                         />
