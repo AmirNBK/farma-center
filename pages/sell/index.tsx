@@ -82,7 +82,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const isAllFieldsEmpty = Object.values(formData).every((value) => value === '');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -109,6 +109,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
     };
 
 
+
     return (
         <div className={`flex min-h-screen flex-col items-center AboutUs mt-15 ${vazir.className}`}
             style={{ background: '#313232' }}
@@ -117,7 +118,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
 
 
             <div className='mainContainer flex flex-row-reverse gap-6'>
-                <form ref={form} className='InfosForm flex-1 px-8'>
+                <form ref={form} className='InfosForm flex-1 px-8' onSubmit={handleSubmit}>
                     <InfoContainer info='خوش آمدید! در این صفحه اطلاعات مربوط به داروخانه خود را میتوانید وارد کنید و به فروش بگذارید تا توسط خریداران مشاهده شود. اگر سوالی داشتید میتوانید با مشاوران ما در ارتباط باشید.' icon={icon} />
                     <h3 className='text-white text-3xl font-semibold my-10 text-right gap-6'>
                         اطلاعات داروخانه خود را وارد نمایید
@@ -128,7 +129,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                             placeholder="شهر موردنظر را انتخاب کنید"
                             className='rtl'
                             minMenuHeight={50}
-                            value={shahrOptions.find(option => option.value === selectedCity)}
+                            value={shahrOptions.find((option: { value: string; }) => option.value === selectedCity)}
                             onChange={handleCityChange}
                             name='city'
                         />
@@ -231,7 +232,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                     <div className='w-full text-center my-10'>
                         <Button
                             style={{ padding: '7px 65px', background: '#EBDAB2', color: 'black', border: 'none' }}
-                            onClick={handleSubmit}
+                            type="submit"
                         >
                             ثبت
                         </Button>
