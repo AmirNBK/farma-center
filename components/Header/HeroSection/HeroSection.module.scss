@@ -45,6 +45,7 @@
 
 .HeroSection__video {
     transform: translateY(-100px);
+    width: 12000px;
     @media screen and (max-width: 1280px) {
         transform: none;
     }

@@ -24,10 +24,11 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
 
     const { shahr } = require("iran-cities-json");
 
-    const shahrOptions = shahr.map((city) => ({
+    const shahrOptions = shahr.map((city: { name: string }) => ({
         value: city.name,
         label: city.name,
     }));
+
 
 
     const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
         rent: '',
         email: '',
         phone: ''
-      });
+    });
 
     const successfulToast = (text: string) => {
         toast.success(text, {
@@ -74,7 +75,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
-      };
+    };
 
     const handleCityChange = (selectedOption: { value: string; label: string } | null) => {
         setSelectedCity(selectedOption?.value || '');
@@ -134,17 +135,17 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                         <div className='flex flex-col gap-6'>
                             <div className='flex flex-row w-full justify-between gap-6'>
                                 <InputText
-                                    name='daily_sales'
-                                    value={formData.daily_sales}
-                                    onChange={handleChange}
-                                    placeholder='فروش روزانه'
-                                    className='text-right w-full rtl'
-                                />
-                                <InputText
                                     name='insurance'
                                     value={formData.insurance}
                                     onChange={handleChange}
                                     placeholder='مبلغ بیمه ماهانه'
+                                    className='text-right w-full rtl'
+                                />
+                                <InputText
+                                    name='daily_sales'
+                                    value={formData.daily_sales}
+                                    onChange={handleChange}
+                                    placeholder='فروش روزانه'
                                     className='text-right w-full rtl'
                                 />
                             </div>
@@ -169,7 +170,7 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                     name='rent'
                                     value={formData.rent}
                                     onChange={handleChange}
-                                    placeholder='رهن و اجاره ملک'
+                                    placeholder='رهن ملک'
                                     className='text-right w-full rtl'
                                 />
                             </div>
@@ -191,6 +192,41 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                                 />
                             </div>
                         </div>
+
+                        <div className='flex flex-row w-full justify-between gap-6'>
+                            <InputText
+                                name='phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder='اجاره ملک'
+                                className='text-right w-full rtl'
+                            />
+
+                            <InputText
+                                name='phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder='دپو'
+                                className='text-right w-full rtl'
+                            />
+                        </div>
+
+                        <div className='flex flex-row w-full justify-between gap-6'>
+                            <InputText
+                                name='phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder='قیمت پیشنهادی'
+                                className='text-right w-full rtl'
+                            />
+                            <InputText
+                                name='phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder='سابقه فعالیت'
+                                className='text-right w-full rtl'
+                            />
+                        </div>
                     </div>
                     <div className='w-full text-center my-10'>
                         <Button
@@ -202,7 +238,9 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                     </div>
                 </form>
                 <div className='SellImage flex-1 xl:block hidden'>
-                    <Image src={medicalBanner} alt='banner' className='h-full object-cover' style={{ borderTopRightRadius: '6px', borderBottomRightRadius: '6px' }} />
+                    <Image src={medicalBanner} alt='banner'
+                        className='h-full object-cover' unoptimized
+                        style={{ borderTopRightRadius: '6px', borderBottomRightRadius: '6px' }} />
                 </div>
             </div>
 

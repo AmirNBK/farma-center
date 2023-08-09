@@ -7,9 +7,14 @@ import more from '../../../assets/Icons/More.svg'
 import smallPolygon from '../../../assets/Icons/SmallPolygon.svg'
 import style from "./HeroSection.module.scss";
 import Link from 'next/link';
+import pic from '../../../assets/Images/doctorMockup2.png'
 
 const HeroSection = (props: {
-    data: [{}]
+    data: {
+        welcomeTitle: string;
+        welcomeDescription: string;
+        button: string;
+    }
 }) => {
     const data = props.data
 
@@ -31,8 +36,7 @@ const HeroSection = (props: {
                 </div>
             </div>
             <div className='HeroSection__leftSide md:block hidden  relative mr-11' style={{ flex: '1.5' }}>
-                <video src={require('../../../assets/Videos/mock.mp4')} className={`mx-auto my-0 w-52 xl:w-auto ${style.HeroSection__video}`}
-                    autoPlay loop muted />
+                <Image src={pic} alt='heroSectionImage' className={`mx-auto my-0 w-52 xl:w-96 ${style.HeroSection__video}`} />
                 <Image src={polygon} className={`absolute right-0 top-10 z-minus ${style.shape}`} alt='polygon' />
                 <Image src={cube} className={`absolute right-0 shape z-minus ${style.cube}`} style={{ top: '-50px' }} alt='cube' />
                 <Image src={more} className={`absolute bottom-0 z-minus ${style.cube}`} alt='more' style={{ top: '50%' }} />
