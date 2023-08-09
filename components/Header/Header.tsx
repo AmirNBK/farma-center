@@ -1,18 +1,25 @@
-import { Vazirmatn } from 'next/font/google'
-import React, { useEffect } from 'react';
+import { Vazirmatn } from 'next/font/google';
+import React from 'react';
 import logo from '../../assets/Icons/MainLogo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const vazir = Vazirmatn({ subsets: ['latin'] })
+const vazir = Vazirmatn({ subsets: ['latin'] });
+
+interface HeaderItem {
+    label: {
+        url: string;
+        title: string;
+    };
+    key: string;
+}
 
 const Header = (props: {
     HomePageHeader: boolean;
-    headerItems: [];
+    headerItems: HeaderItem[];
 }) => {
     const HomePageHeader = props.HomePageHeader;
     const headerItems = props.headerItems;
-    
 
     return (
         <div
@@ -27,7 +34,9 @@ const Header = (props: {
             </Link>
             <div className='flex gap-x-6 flex-row-reverse'>
                 {headerItems?.map((item) => (
-                    <Link href={`${item?.label?.url}`} key={item.key}>{item?.label?.title}</Link>
+                    <Link href={item.label.url} key={item.key}>
+                        {item.label.title}
+                    </Link>
                 ))}
             </div>
         </div>

@@ -11,7 +11,7 @@ const AboutUs = (props: {
     text: string
 }) => {
     const text = props.text
-    const aboutUsRef = useRef(null);
+    const aboutUsRef = useRef<HTMLDivElement | null>(null);
     const polygonRef = useRef(null);
     const doctorMockupRef = useRef(null);
     const [isReached, setIsReached] = useState(false)

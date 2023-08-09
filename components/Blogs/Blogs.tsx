@@ -6,15 +6,16 @@ import styles from './blogs.module.scss'
 import medicine from '../../assets/Images/medicine.png'
 
 
-interface Product {
+interface Blog {
     title: string;
     description: string;
 }
 
-const Blogs = (props : {
-    data : []
-}) => {
-    const data = props.data
+interface BlogsProps {
+    data: Blog[];
+}
+const Blogs = (props: BlogsProps) => {
+    const data = props.data;
 
     const responsiveOptions = [
         {
@@ -34,7 +35,7 @@ const Blogs = (props : {
         }
     ];
 
-    const blogRef = useRef(null);
+    const blogRef = useRef<HTMLDivElement>(null);
     const [isReached, setIsReached] = useState(false)
 
     useEffect(() => {
@@ -56,11 +57,11 @@ const Blogs = (props : {
         };
     }, []);
 
-    const blogsTemplate = (blogs) => {
+    const blogsTemplate = (blogs: Blog) => {
         return (
             <div className={`CardsContainer flex flex-row w-full my-12 justify-center`}>
                 <Card title={blogs.title} description={blogs.description} footerText='بیشتر بخوانید' playAnimation={isReached}
-                equalSize image={medicine}
+                    equalSize image={medicine}
                 />
             </div>
         );

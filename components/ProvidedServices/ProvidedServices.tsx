@@ -3,13 +3,20 @@ import tick from '../../assets/Icons/tick.svg';
 import location from '../../assets/Icons/map.svg';
 import Image from 'next/image';
 
-const ProvidedServices = (props: {
+interface Feature {
+    label: string;
+}
+
+interface ProvidedServicesProps {
     data: {
         title: string;
         description: string;
+        features: Feature[];
     };
-}) => {
-    const data = props.data
+}
+
+const ProvidedServices = (props: ProvidedServicesProps) => {
+    const { data } = props;
 
     return (
         <div className='ProvidedServices my-16 px-8 pt-28 pb-12 sm:pt-60 sm:pb-28'
@@ -30,7 +37,7 @@ const ProvidedServices = (props: {
                 autoPlay loop muted />
 
             <div className='ProvidedServices__features mt-10 md:m-0 flex-wrap gap-12 px-5 flex flex-row-reverse justify-around items-baseline skew-y-6'>
-                {data?.features?.map((feature, index) => (                    
+                {data?.features?.map((feature, index) => (
                     <div className='ProvidedServices__features__item flex flex-col items-center' key={index}>
                         <Image src={index === 0 ? tick : index === 2 ? tick : location} width={30} height={30} alt='featuresPics' />
                         <p style={{ color: '#EBDAB2' }} className='mt-2 sm:text-base text-xs'>{feature.label}</p>

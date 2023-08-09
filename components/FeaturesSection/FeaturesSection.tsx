@@ -8,18 +8,27 @@ import doctor from '../../assets/Icons/doctor.svg'
 import { Vazirmatn } from 'next/font/google'
 
 
+interface Slide {
+    slideImage: {
+        mediaItemUrl: string;
+    };
+    slideTitle: string;
+    slideDescription: string;
+}
+
 interface Product {
     title: string;
     description: string;
-    icon: any
+    icon: any;
+    slide: Slide; // Add this property to represent the slide data
 }
 const vazir = Vazirmatn({ subsets: ['latin'] })
 
-const FeaturesSection = (props : {
-    data : Product
+const FeaturesSection = (props: {
+    data: Product
 }) => {
     const data = props.data
-    
+
 
     const productTemplate = (product: Product) => {
         return (
@@ -33,7 +42,7 @@ const FeaturesSection = (props : {
 
     return (
         <div className={`FeaturesSection ${vazir.className} bg-white relative`}>
-            <div className="absolute left-0 z-0" style={{top : '-55px'}}>
+            <div className="absolute left-0 z-0" style={{ top: '-55px' }}>
                 <Image src={MultiPolygon} alt="polygon" />
             </div>
             <div style={{ marginTop: '150px' }} className='card'>
