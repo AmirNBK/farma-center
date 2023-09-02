@@ -17,9 +17,6 @@ const Card = (props: {
     const equalSize = props.equalSize
     const image = props.image
 
-    console.log(description[0].item);
-
-
     return (
         <div className={`CardContainer ${playAnimation && styles.card}`}>
             <div className="overflow-hidden shadow-lg bg-white text-right flex flex-col justify-between h-fit"
