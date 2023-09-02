@@ -124,15 +124,24 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                         اطلاعات داروخانه خود را وارد نمایید
                     </h3>
                     <div className='flex flex-col gap-6'>
-                        <Select
-                            options={shahrOptions}
-                            placeholder="شهر موردنظر را انتخاب کنید"
-                            className='rtl'
-                            minMenuHeight={50}
-                            value={shahrOptions.find((option: { value: string; }) => option.value === selectedCity)}
-                            onChange={handleCityChange}
-                            name='city'
-                        />
+                        <div className='flex flex-row w-full justify-between gap-6'>
+                            <InputText
+                                name='insurance'
+                                value={formData.insurance}
+                                onChange={handleChange}
+                                placeholder='منطقه'
+                                className='text-right w-full rtl'
+                            />
+                            <Select
+                                options={shahrOptions}
+                                placeholder="شهر موردنظر را انتخاب کنید"
+                                className='rtl w-full'
+                                minMenuHeight={50}
+                                value={shahrOptions.find((option: { value: string; }) => option.value === selectedCity)}
+                                onChange={handleCityChange}
+                                name='city'
+                            />
+                        </div>
                         <div className='flex flex-col gap-6'>
                             <div className='flex flex-row w-full justify-between gap-6'>
                                 <InputText
@@ -161,10 +170,10 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
                             </div>
                             <div className='flex flex-row w-full justify-between gap-6'>
                                 <InputText
-                                    name='metre'
-                                    value={formData.metre}
+                                    name='phone'
+                                    value={formData.phone}
                                     onChange={handleChange}
-                                    placeholder='متراژ داروخانه'
+                                    placeholder='اجاره ملک'
                                     className='text-right w-full rtl'
                                 />
                                 <InputText
@@ -196,10 +205,10 @@ export default function Sell({ headerData, footerData, policiesData }: { headerD
 
                         <div className='flex flex-row w-full justify-between gap-6'>
                             <InputText
-                                name='phone'
-                                value={formData.phone}
+                                name='metre'
+                                value={formData.metre}
                                 onChange={handleChange}
-                                placeholder='اجاره ملک'
+                                placeholder='متراژ داروخانه'
                                 className='text-right w-full rtl'
                             />
 

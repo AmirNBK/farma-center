@@ -213,9 +213,13 @@ export async function getQueryDrugstores() {
         nodes {
           drugstores {
             drugstoresList {
-              description
               drugstoreName
-              fieldGroupName
+              description {
+                item {
+                  title
+                  description
+                }
+              }
             }
           }
         }
