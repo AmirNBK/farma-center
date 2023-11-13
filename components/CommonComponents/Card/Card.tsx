@@ -4,7 +4,7 @@ import styles from '../../Blogs/blogs.module.scss'
 
 const Card = (props: {
     title: string
-    description: string
+    description: any
     footerText: string
     playAnimation: boolean
     equalSize?: boolean
@@ -26,13 +26,14 @@ const Card = (props: {
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2" style={{ color: '#034D83' }}>{title}</div>
                     <div className='flex flex-wrap justify-end gap-3'>
-                        {description[0]?.item.map((item: any) => {
+                        {description.item && description[0]?.item?.map((item: any) => {
                             return (
                                 <p className="text-gray-700 text-base rtl">
                                     {item.title} : {item.description}
                                 </p>
-                            )
+                            );
                         })}
+
                     </div>
                 </div>
                 <div className="px-6 pb-6 pt-4 text-xl" style={{ color: '#A017B7' }}>
