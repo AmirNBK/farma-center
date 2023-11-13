@@ -26,9 +26,9 @@ const Card = (props: {
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2" style={{ color: '#034D83' }}>{title}</div>
                     <div className='flex flex-wrap justify-end gap-3'>
-                        {description.item && description[0]?.item?.map((item: any) => {
+                        {description.item && description[0]?.item?.map((item: any, index: number) => {
                             return (
-                                <p className="text-gray-700 text-base rtl">
+                                <p className="text-gray-700 text-base rtl" key={index}>
                                     {item.title} : {item.description}
                                 </p>
                             );
