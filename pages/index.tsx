@@ -26,7 +26,7 @@ export default function Home({ data, headerData, footerData , policiesData }: { 
       className={`flex min-h-screen flex-col items-center ${vazir.className}`
       }
     >
-      <title> Farma center </title>
+      <title> Pharma center </title>
       <PrimeReactProvider>
         <div
           className={`${style.HeroSection}`}
